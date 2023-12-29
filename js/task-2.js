@@ -1,12 +1,15 @@
 'use strict';
 
 function calcAverageCalories(days) {
-  let avrCalories = 0;
-  for (let day of Object.values(days)) {
-    avrCalories += day;
+  let avrCalories = days.reduce(function (acc, item) {
+    return acc + item.calories;
+  }, 0);
+
+  if (days.length === 0) {
+    return 0;
   }
 
-  return avrCalories;
+  return avrCalories / days.length;
 }
 
 console.log(
